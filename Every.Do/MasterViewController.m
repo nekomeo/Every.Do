@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "ToDo.h"
+#import "ToDoTableViewControllerCell.h"
 
 @interface MasterViewController ()
 
@@ -77,16 +78,26 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return self.toDoTasks.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+//
+//    NSDate *object = self.objects[indexPath.row];
+//    cell.textLabel.text = [object description];
+//    return cell;
+    ToDoTableViewControllerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+//    NSString *taskTitle = self.toDoTasks[indexPath.row];
+    
+    ToDo *toDo = (self.toDoTasks)[indexPath.row];
+    cell.taskLabel.text = toDo.toDoTitle;
+    cell.descriptionLabel.text = toDo.toDoDescription;
+    cell.priorityLabel.text = [NSString stringWithFormat:@"%ld", (long)toDo.priorityNumber];
+    
     return cell;
+    
 }
 
 

@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *priorityImage;
+@property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
+
 
 @end
