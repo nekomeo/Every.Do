@@ -14,6 +14,8 @@
 		6AD441F31EF062C200F32C3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AD441F11EF062C200F32C3A /* Main.storyboard */; };
 		6AD441F51EF062C200F32C3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AD441F41EF062C200F32C3A /* Assets.xcassets */; };
 		6AD441F81EF062C200F32C3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AD441F61EF062C200F32C3A /* LaunchScreen.storyboard */; };
+		6AD442011EF0676200F32C3A /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442001EF0676200F32C3A /* ToDo.m */; };
+		6AD442041EF075DD00F32C3A /* ToDoTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		6AD441F41EF062C200F32C3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AD441F71EF062C200F32C3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AD441F91EF062C200F32C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AD441FF1EF0676200F32C3A /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
+		6AD442001EF0676200F32C3A /* ToDo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
+		6AD442021EF075DD00F32C3A /* ToDoTableViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoTableViewControllerCell.h; sourceTree = "<group>"; };
+		6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewControllerCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,10 @@
 				6AD441EE1EF062C200F32C3A /* DetailViewController.h */,
 				6AD441EF1EF062C200F32C3A /* DetailViewController.m */,
 				6AD441F11EF062C200F32C3A /* Main.storyboard */,
+				6AD441FF1EF0676200F32C3A /* ToDo.h */,
+				6AD442001EF0676200F32C3A /* ToDo.m */,
+				6AD442021EF075DD00F32C3A /* ToDoTableViewControllerCell.h */,
+				6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */,
 				6AD441F41EF062C200F32C3A /* Assets.xcassets */,
 				6AD441F61EF062C200F32C3A /* LaunchScreen.storyboard */,
 				6AD441F91EF062C200F32C3A /* Info.plist */,
@@ -155,10 +165,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD442011EF0676200F32C3A /* ToDo.m in Sources */,
 				6AD441EA1EF062C200F32C3A /* AppDelegate.m in Sources */,
 				6AD441ED1EF062C200F32C3A /* MasterViewController.m in Sources */,
 				6AD441E71EF062C200F32C3A /* main.m in Sources */,
 				6AD441F01EF062C200F32C3A /* DetailViewController.m in Sources */,
+				6AD442041EF075DD00F32C3A /* ToDoTableViewControllerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

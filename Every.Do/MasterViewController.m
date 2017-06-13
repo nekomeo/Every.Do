@@ -8,10 +8,13 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "ToDo.h"
 
 @interface MasterViewController ()
 
 @property NSMutableArray *objects;
+@property (nonatomic) NSMutableArray *toDoTasks;
+
 @end
 
 @implementation MasterViewController
@@ -23,6 +26,14 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    ToDo *firstItem = [[ToDo alloc] initWithTitle:@"Do Every.Do" withDescription:@"Finish all tasks in assignment" priorityNumber:1];
+    ToDo *secondItem = [[ToDo alloc] initWithTitle:@"Freak out about test" withDescription:@"Run around and panic" priorityNumber:2];
+    ToDo *thirdItem = [[ToDo alloc] initWithTitle:@"KCCO" withDescription:@"Be zen" priorityNumber:3];
+    
+    NSArray *toDoArray = @[firstItem, secondItem, thirdItem];
+    self.toDoTasks = [NSMutableArray new];
+    [self.toDoTasks addObjectsFromArray:toDoArray];
 }
 
 
