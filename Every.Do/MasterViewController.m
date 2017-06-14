@@ -10,8 +10,9 @@
 #import "DetailViewController.h"
 #import "ToDo.h"
 #import "ToDoTableViewControllerCell.h"
+#import "AddNewTaskTableViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewTaskDelegate>
 
 @property NSMutableArray *objects;
 @property (nonatomic) NSMutableArray *toDoTasks;
@@ -20,7 +21,8 @@
 
 @implementation MasterViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -38,83 +40,103 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
 }
 
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 
-- (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
+- (void)insertNewObject:(id)sender
+{
+    if (!self.toDoTasks)
+    {
+        self.toDoTasks = [[NSMutableArray alloc] init];
     }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self performSegueWithIdentifier:@"NewToDoMenu" sender:self];
+}
+
+- (void)newTitle:(NSString *)title withDescription:(NSString *)toDoDescription priorityNumber:(NSInteger)priorityNumber
+{
+    ToDo *enterNewToDo = [[ToDo alloc] initWithTitle:title withDescription:toDoDescription priorityNumber:priorityNumber];
+    [self.toDoTasks addObject:enterNewToDo];
 }
 
 
 #pragma mark - Segues
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
-        [controller setDetailItem:object];
+        ToDo *todo = self.toDoTasks[indexPath.row];
+        
+        [controller setDetailItem:todo];
+    }
+    if ([[segue identifier] isEqualToString:@"NewToDoMenu"])
+    {
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        AddNewTaskTableViewController *newToDoController = (AddNewTaskTableViewController *)[segue destinationViewController];
+//        ToDo *toDo = self.toDoTasks[indexPath.row];
+        
+        newToDoController.delegate = self;
+//        [newToDoController setDetailItem:toDo];
     }
 }
 
 
 #pragma mark - Table View
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.toDoTasks.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-//
-//    NSDate *object = self.objects[indexPath.row];
-//    cell.textLabel.text = [object description];
-//    return cell;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
     ToDoTableViewControllerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-//    NSString *taskTitle = self.toDoTasks[indexPath.row];
-    
-    ToDo *toDo = (self.toDoTasks)[indexPath.row];
-    cell.taskLabel.text = toDo.toDoTitle;
-    cell.descriptionLabel.text = toDo.toDoDescription;
-    cell.priorityLabel.text = [NSString stringWithFormat:@"%ld", (long)toDo.priorityNumber];
+    ToDo *toDo = self.toDoTasks[indexPath.row];
+    [cell configureCellWithToDo:toDo];
     
     return cell;
-    
 }
 
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
+- (void)addNewToDo:(ToDo *)toDoNew
+{
+    [self.toDoTasks addObject:toDoNew];
+    [self.tableView reloadData];
+}
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
+        [self.toDoTasks removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
-
 
 @end

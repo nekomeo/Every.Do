@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToDo.h"
 
 @interface ToDoTableViewControllerCell : UITableViewCell
 
@@ -14,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
 
+-(void)configureCellWithToDo:(ToDo *)toDo;
 
 @end

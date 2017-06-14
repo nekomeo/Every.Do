@@ -12,7 +12,11 @@
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UITextView *detailTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *taskImage;
+@property (weak, nonatomic) IBOutlet UILabel *taskTitleDetailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taskDescDetailLabel;
+
+- (void)setDetailItem:(id)newDetailItem;
 
 @end
 
