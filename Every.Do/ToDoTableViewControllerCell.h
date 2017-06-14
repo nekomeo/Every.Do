@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *priorityImage;
 
 -(void)configureCellWithToDo:(ToDo *)toDo;
 

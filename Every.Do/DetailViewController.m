@@ -36,7 +36,7 @@
         
         self.taskCompleteDetailLabel.text = complete;
         
-        self.taskImage.image = [UIImage imageNamed:[[NSString stringWithFormat:@"%ld", (long)self.detailItem.priorityNumber]stringByAppendingString:@"Players"]];        
+//        self.taskImage.image = [UIImage imageNamed:[[NSString stringWithFormat:@"%ld", (long)self.detailItem.priorityNumber]stringByAppendingString:@"Players"]];        
         
     }
 }

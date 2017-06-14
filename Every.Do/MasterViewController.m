@@ -10,9 +10,10 @@
 #import "DetailViewController.h"
 #import "ToDo.h"
 #import "ToDoTableViewControllerCell.h"
-#import "AddNewTaskTableViewController.h"
+//#import "AddNewTaskTableViewController.h"
+#import "AddNewToDoTableViewController.h"
 
-@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewTaskDelegate>
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewToDoDelegate>
 
 @property NSMutableArray *objects;
 @property (nonatomic) NSMutableArray *toDoTasks;
@@ -39,6 +40,15 @@
     [self.toDoTasks addObjectsFromArray:toDoArray];
 }
 
+- (UIImage *)imageForPriority:(int)priority
+{
+    switch (priority) {
+        case 1: return [UIImage imageNamed:@"1StarSmall"];
+        case 2: return [UIImage imageNamed:@"2StarsSmall"];
+        case 3: return [UIImage imageNamed:@"3StarsSmall"];
+    }
+    return nil;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -82,12 +92,9 @@
     }
     if ([[segue identifier] isEqualToString:@"NewToDoMenu"])
     {
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        AddNewTaskTableViewController *newToDoController = (AddNewTaskTableViewController *)[segue destinationViewController];
-//        ToDo *toDo = self.toDoTasks[indexPath.row];
+        AddNewToDoTableViewController *newToDoController = (AddNewToDoTableViewController *)[segue destinationViewController];
         
         newToDoController.delegate = self;
-//        [newToDoController setDetailItem:toDo];
     }
 }
 
@@ -137,6 +144,18 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+#pragma mark - AddNewToDoViewControllerDelegate
+
+- (void)addNewToDoViewControllerDidCancel:(AddNewToDoTableViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addNewToDoViewControllerDidSave:(AddNewToDoTableViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

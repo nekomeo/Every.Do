@@ -1,22 +1,18 @@
 //
-//  AddNewTaskTableViewController.m
+//  AddNewToDoTableViewController.m
 //  Every.Do
 //
 //  Created by Elle Ti on 2017-06-13.
 //  Copyright © 2017 Elle Ti. All rights reserved.
 //
 
-#import "AddNewTaskTableViewController.h"
+#import "AddNewToDoTableViewController.h"
 
-@interface AddNewTaskTableViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *addNewTaskTextField;
-@property (weak, nonatomic) IBOutlet UITextView *addNewTaskDescriptionTextField;
-@property (weak, nonatomic) IBOutlet UITextField *addNewPriorityTextField;
-@property (weak, nonatomic) IBOutlet UIButton *addNewToDoButton;
+@interface AddNewToDoTableViewController ()
 
 @end
 
-@implementation AddNewTaskTableViewController
+@implementation AddNewToDoTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,47 +32,14 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-    return 1;
+#warning Incomplete implementation, return the number of sections
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
-    return 1;
+#warning Incomplete implementation, return the number of rows
+    return 0;
 }
-
--(void)configureCellWithNewToDo:(ToDo *)toDo
-{
-    self.addNewTaskTextField.text = toDo.toDoTitle;
-    self.addNewTaskDescriptionTextField.text = toDo.toDoDescription;
-    self.addNewPriorityTextField.text = [NSString stringWithFormat:@"%ld", (long)toDo.priorityNumber];
-}
-
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem)
-    {
-        _detailItem = newDetailItem;
-        
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    if (self.detailItem)
-    {
-        // something goes here
-    }
-}
-- (IBAction)pushNewToDo:(UIButton *)sender
-{
-    self.toDo = [[ToDo alloc] initWithTitle:self.addNewTaskTextField.text withDescription:self.addNewTaskDescriptionTextField.text priorityNumber:[self.addNewPriorityTextField.text intValue]];
-    
-    [self.delegate addNewToDo:self.toDo];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -131,5 +94,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//- (IBAction)cancel:(id)sender
+//{
+//    [self.delegate addNewToDoViewControllerDidCancel:self];
+//}
+//- (IBAction)done:(id)sender
+//{
+//    [self.delegate addNewToDoViewControllerDidSave:self];
+//}
 
 @end

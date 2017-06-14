@@ -17,6 +17,7 @@
 		6AD442011EF0676200F32C3A /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442001EF0676200F32C3A /* ToDo.m */; };
 		6AD442041EF075DD00F32C3A /* ToDoTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */; };
 		6AD442101EF097AA00F32C3A /* AddNewTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD4420F1EF097AA00F32C3A /* AddNewTaskTableViewController.m */; };
+		6AD442131EF111C100F32C3A /* AddNewToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442121EF111C100F32C3A /* AddNewToDoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewControllerCell.m; sourceTree = "<group>"; };
 		6AD4420E1EF097AA00F32C3A /* AddNewTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTaskTableViewController.h; sourceTree = "<group>"; };
 		6AD4420F1EF097AA00F32C3A /* AddNewTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskTableViewController.m; sourceTree = "<group>"; };
+		6AD442111EF111C100F32C3A /* AddNewToDoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewToDoTableViewController.h; sourceTree = "<group>"; };
+		6AD442121EF111C100F32C3A /* AddNewToDoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewToDoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 				6AD441EE1EF062C200F32C3A /* DetailViewController.h */,
 				6AD441EF1EF062C200F32C3A /* DetailViewController.m */,
 				6AD441F11EF062C200F32C3A /* Main.storyboard */,
+				6AD442111EF111C100F32C3A /* AddNewToDoTableViewController.h */,
+				6AD442121EF111C100F32C3A /* AddNewToDoTableViewController.m */,
 				6AD441FF1EF0676200F32C3A /* ToDo.h */,
 				6AD442001EF0676200F32C3A /* ToDo.m */,
 				6AD442021EF075DD00F32C3A /* ToDoTableViewControllerCell.h */,
@@ -172,6 +177,7 @@
 			files = (
 				6AD442011EF0676200F32C3A /* ToDo.m in Sources */,
 				6AD441EA1EF062C200F32C3A /* AppDelegate.m in Sources */,
+				6AD442131EF111C100F32C3A /* AddNewToDoTableViewController.m in Sources */,
 				6AD441ED1EF062C200F32C3A /* MasterViewController.m in Sources */,
 				6AD441E71EF062C200F32C3A /* main.m in Sources */,
 				6AD441F01EF062C200F32C3A /* DetailViewController.m in Sources */,
@@ -333,6 +339,7 @@
 				6AD441FE1EF062C200F32C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
