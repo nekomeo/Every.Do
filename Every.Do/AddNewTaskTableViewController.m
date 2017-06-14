@@ -69,6 +69,13 @@
         // something goes here
     }
 }
+- (IBAction)pushNewToDo:(UIButton *)sender
+{
+    self.toDo = [[ToDo alloc] initWithTitle:self.addNewTaskTextField.text withDescription:self.addNewTaskDescriptionTextField.text priorityNumber:[self.addNewPriorityTextField.text intValue]];
+    
+    [self.delegate addNewToDo:self.toDo];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

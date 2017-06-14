@@ -11,10 +11,10 @@
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *taskDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *taskImage;
 @property (weak, nonatomic) IBOutlet UILabel *taskTitleDetailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *taskDescDetailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *taskCompleteDetailLabel;
 
 - (void)setDetailItem:(id)newDetailItem;
 
