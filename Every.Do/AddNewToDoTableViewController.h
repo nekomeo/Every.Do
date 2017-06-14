@@ -14,15 +14,18 @@
 
 @protocol AddNewToDoDelegate <NSObject>
 
-- (void)addNewToDoViewControllerDidCancel:(AddNewToDoTableViewController *)controller;
-- (void)addNewToDoViewControllerDidSave:(AddNewToDoTableViewController *)controller;
+//- (void)addNewToDoViewControllerDidCancel:(AddNewToDoTableViewController *)controller;
+//- (void)addNewToDoViewControllerDidSave:(AddNewToDoTableViewController *)controller;
 - (void)addNewToDo:(ToDo *)toDoNew;
+//- (void)addNewToDo:(ToDo *)toDoNew;
 
 @end
 
 @interface AddNewToDoTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UITextField *toDoTextField;
 @property (nonatomic, weak) id <AddNewToDoDelegate> delegate;
+
+@property (strong, nonatomic) id detailItem;
 
 @property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
 @property (weak, nonatomic) IBOutlet UITextView *toDoDescriptionTextView;

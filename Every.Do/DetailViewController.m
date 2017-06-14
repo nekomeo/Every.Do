@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "ToDo.h"
+#import "AddNewToDoTableViewController.h"
 
 @interface DetailViewController ()
 
@@ -30,14 +31,13 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
+        self.taskTitleDetailLabel.text = [self.detailItem title];
+        
         self.taskDescriptionTextView.text = [self.detailItem description];
 
         NSString *complete = [NSString stringWithFormat:@"Complete %s", [self.detailItem isCompleted]? "YES" : "NO"];
         
         self.taskCompleteDetailLabel.text = complete;
-        
-//        self.taskImage.image = [UIImage imageNamed:[[NSString stringWithFormat:@"%ld", (long)self.detailItem.priorityNumber]stringByAppendingString:@"Players"]];        
-        
     }
 }
 

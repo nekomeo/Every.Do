@@ -72,11 +72,11 @@
     [self performSegueWithIdentifier:@"NewToDoMenu" sender:self];
 }
 
-- (void)newTitle:(NSString *)title withDescription:(NSString *)toDoDescription priorityNumber:(NSInteger)priorityNumber
-{
-    ToDo *enterNewToDo = [[ToDo alloc] initWithTitle:title withDescription:toDoDescription priorityNumber:priorityNumber];
-    [self.toDoTasks addObject:enterNewToDo];
-}
+//- (void)newTitle:(NSString *)title withDescription:(NSString *)toDoDescription priorityNumber:(NSInteger)priorityNumber
+//{
+//    ToDo *enterNewToDo = [[ToDo alloc] initWithTitle:title withDescription:toDoDescription priorityNumber:priorityNumber];
+//    [self.toDoTasks addObject:enterNewToDo];
+//}
 
 
 #pragma mark - Segues
@@ -91,6 +91,7 @@
         [controller setDetailItem:todo];
     }
     
+    //******
     if ([[segue identifier] isEqualToString:@"NewToDoMenu"])
     {
         AddNewToDoTableViewController *newToDoController = (AddNewToDoTableViewController *)[segue destinationViewController];
@@ -131,10 +132,15 @@
     return YES;
 }
 
+
 - (void)addNewToDo:(ToDo *)toDoNew
 {
-    [self.toDoTasks addObject:toDoNew];
-    [self.tableView reloadData];
+    NSLog(@"in new todo %@", toDoNew);
+    if (toDoNew)
+    {
+        [self.toDoTasks addObject:toDoNew];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,18 +151,6 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
-}
-
-#pragma mark - AddNewToDoViewControllerDelegate
-
-- (void)addNewToDoViewControllerDidCancel:(AddNewToDoTableViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)addNewToDoViewControllerDidSave:(AddNewToDoTableViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

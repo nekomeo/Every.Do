@@ -14,6 +14,23 @@
 
 @implementation AddNewToDoTableViewController
 
+- (void)setDetailItem:(id)newDetailItem
+{
+    if (_detailItem != newDetailItem)
+    {
+        _detailItem = newDetailItem;
+        [self configureView];
+    }
+}
+
+- (void)configureView
+{
+    if (self.detailItem)
+    {
+    
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -30,12 +47,14 @@
 }
 
 #pragma mark - Table view data source
-    
 
 - (IBAction)cancel:(id)sender
 {
-    [self.delegate addNewToDoViewControllerDidCancel:self];
+    //[self.delegate addNewToDoViewControllerDidCancel:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 - (IBAction)done:(id)sender
 {
     ToDo *toDo = [[ToDo alloc] init];
@@ -44,16 +63,9 @@
     toDo.priorityNumber = [self.priorityTextField.text integerValue];
     toDo.toDoDescription = self.toDoDescriptionTextView.text;
     
-    [self.delegate addNewToDoViewControllerDidSave:self];
+    //self.delegate = self;
+    [self.delegate addNewToDo:toDo];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
--(void)configureCellWithNewToDo:(ToDo *)toDo
-{
-    self.toDoTextField.text = toDo.toDoTitle;
-    self.toDoDescriptionTextView.text = toDo.toDoDescription;
-    self.priorityTextField.text = [NSString stringWithFormat:@"%ld", (long)toDo.priorityNumber];
-}
-
 
 @end
