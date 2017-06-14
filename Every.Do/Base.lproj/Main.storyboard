@@ -92,7 +92,7 @@
                             <tableViewSection headerTitle="New To Do" id="tNO-4I-mwl">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ZRh-0e-hDJ">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZRh-0e-hDJ" id="pHq-gV-2hF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -109,7 +109,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qiJ-8i-W1A">
-                                        <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="99" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qiJ-8i-W1A" id="w0J-bw-Jm8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -117,7 +117,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="IzJ-j4-C0i">
-                                        <rect key="frame" x="0.0" y="143.33333333333334" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="143" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IzJ-j4-C0i" id="b9V-Sa-n89">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -135,12 +135,12 @@
                     <navigationItem key="navigationItem" title="New To Do" id="sLW-jj-HGf">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="5Ie-Vh-168">
                             <connections>
-                                <action selector="cancel:" destination="2mh-rh-bXm" id="AAC-uR-4tH"/>
+                                <action selector="cancel:" destination="2mh-rh-bXm" id="bpt-2k-Oaa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="bvi-4f-FTu">
                             <connections>
-                                <action selector="done:" destination="2mh-rh-bXm" id="x9w-w6-Fk6"/>
+                                <action selector="done:" destination="2mh-rh-bXm" id="RHc-vI-3nQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -150,23 +150,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nlr-vI-Ixv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="73"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="q1Q-VH-2YT">
-            <objects>
-                <navigationController id="Zfp-be-cMe" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5cU-3f-kGA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="2mh-rh-bXm" kind="relationship" relationship="rootViewController" id="p38-Eb-CL9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Gi-uG-Ax5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="709" y="73"/>
+            <point key="canvasLocation" x="1615.9420289855075" y="84.782608695652186"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -222,7 +206,7 @@
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="3UD-VP-xUt">
                             <connections>
-                                <segue destination="Zfp-be-cMe" kind="presentation" identifier="AddToDo" id="Edn-kw-uMJ"/>
+                                <segue destination="OBA-IH-iXw" kind="presentation" identifier="NewToDoMenu" id="UCh-5e-3pZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -374,6 +358,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T01-BD-SKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-403" y="823"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IVL-24-toU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OBA-IH-iXw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TlN-BQ-2WU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2mh-rh-bXm" kind="relationship" relationship="rootViewController" id="5bS-Jz-0f6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fIH-eV-D4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708.69565217391312" y="84.782608695652186"/>
         </scene>
     </scenes>
 </document>

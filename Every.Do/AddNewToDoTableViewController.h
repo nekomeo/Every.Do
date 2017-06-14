@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ToDo.h"
 
+@class AddNewToDoTableViewController;
 @class DetailViewController;
 
 @protocol AddNewToDoDelegate <NSObject>
 
-//- (void)addNewToDoViewControllerDidCancel:(AddNewToDoTableViewController *)controller;
-//- (void)addNewToDoViewControllerDidSave:(AddNewToDoTableViewController *)controller;
-//- (void)addNewToDo:(ToDo *)toDoNew;
+- (void)addNewToDoViewControllerDidCancel:(AddNewToDoTableViewController *)controller;
+- (void)addNewToDoViewControllerDidSave:(AddNewToDoTableViewController *)controller;
+- (void)addNewToDo:(ToDo *)toDoNew;
 
 @end
 
