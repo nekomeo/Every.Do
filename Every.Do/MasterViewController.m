@@ -10,13 +10,13 @@
 #import "DetailViewController.h"
 #import "ToDo.h"
 #import "ToDoTableViewControllerCell.h"
-//#import "AddNewTaskTableViewController.h"
 #import "AddNewToDoTableViewController.h"
 
 @interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewToDoDelegate>
 
 @property NSMutableArray *objects;
 @property (nonatomic, strong) NSMutableArray *toDoTasks;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
 @end
 
@@ -34,6 +34,8 @@
     ToDo *firstItem = [[ToDo alloc] initWithTitle:@"Do Every.Do" withDescription:@"Finish all tasks in assignment" priorityNumber:1];
     ToDo *secondItem = [[ToDo alloc] initWithTitle:@"Freak out about test" withDescription:@"Run around and panic" priorityNumber:2];
     ToDo *thirdItem = [[ToDo alloc] initWithTitle:@"KCCO" withDescription:@"Be zen" priorityNumber:3];
+    
+    firstItem.isCompleted = YES;
     
     NSArray *toDoArray = @[firstItem, secondItem, thirdItem];
     self.toDoTasks = [NSMutableArray new];
@@ -72,12 +74,6 @@
     [self performSegueWithIdentifier:@"NewToDoMenu" sender:self];
 }
 
-//- (void)newTitle:(NSString *)title withDescription:(NSString *)toDoDescription priorityNumber:(NSInteger)priorityNumber
-//{
-//    ToDo *enterNewToDo = [[ToDo alloc] initWithTitle:title withDescription:toDoDescription priorityNumber:priorityNumber];
-//    [self.toDoTasks addObject:enterNewToDo];
-//}
-
 
 #pragma mark - Segues
 
@@ -91,7 +87,6 @@
         [controller setDetailItem:todo];
     }
     
-    //******
     if ([[segue identifier] isEqualToString:@"NewToDoMenu"])
     {
         AddNewToDoTableViewController *newToDoController = (AddNewToDoTableViewController *)[segue destinationViewController];
@@ -122,6 +117,20 @@
     ToDo *toDo = self.toDoTasks[indexPath.row];
     [cell configureCellWithToDo:toDo];
     
+    if (toDo.isCompleted)
+    {
+        NSMutableAttributedString *completedToDoTitle = [[NSMutableAttributedString alloc] initWithString:toDo.toDoTitle attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+        NSMutableAttributedString *completedToDoDescription = [[NSMutableAttributedString alloc] initWithString:toDo.toDoDescription attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+        
+        cell.taskLabel.attributedText = completedToDoTitle;
+        cell.descriptionLabel.attributedText = completedToDoDescription;
+    }
+    
+    else
+    {
+        cell.taskLabel.text = toDo.toDoTitle;
+        cell.descriptionLabel.text = toDo.toDoDescription;
+    }
     return cell;
 }
 
@@ -132,6 +141,14 @@
     return YES;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Index row %ld tapped", (long)indexPath.row);
+    self.selectedIndexPath = indexPath;
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 - (void)addNewToDo:(ToDo *)toDoNew
 {
@@ -151,6 +168,15 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+- (void)toDoTableViewCellSwiped:(ToDoTableViewControllerCell *)cell
+{
+    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+    int swiped = (int)path.row;
+    ToDo *toDo = self.toDoTasks[swiped];
+    toDo.isCompleted = YES;
+    [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

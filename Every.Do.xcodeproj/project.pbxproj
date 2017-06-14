@@ -16,7 +16,6 @@
 		6AD441F81EF062C200F32C3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AD441F61EF062C200F32C3A /* LaunchScreen.storyboard */; };
 		6AD442011EF0676200F32C3A /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442001EF0676200F32C3A /* ToDo.m */; };
 		6AD442041EF075DD00F32C3A /* ToDoTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */; };
-		6AD442101EF097AA00F32C3A /* AddNewTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD4420F1EF097AA00F32C3A /* AddNewTaskTableViewController.m */; };
 		6AD442131EF111C100F32C3A /* AddNewToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442121EF111C100F32C3A /* AddNewToDoTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -37,8 +36,6 @@
 		6AD442001EF0676200F32C3A /* ToDo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
 		6AD442021EF075DD00F32C3A /* ToDoTableViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoTableViewControllerCell.h; sourceTree = "<group>"; };
 		6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewControllerCell.m; sourceTree = "<group>"; };
-		6AD4420E1EF097AA00F32C3A /* AddNewTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewTaskTableViewController.h; sourceTree = "<group>"; };
-		6AD4420F1EF097AA00F32C3A /* AddNewTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewTaskTableViewController.m; sourceTree = "<group>"; };
 		6AD442111EF111C100F32C3A /* AddNewToDoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewToDoTableViewController.h; sourceTree = "<group>"; };
 		6AD442121EF111C100F32C3A /* AddNewToDoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewToDoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,8 +83,6 @@
 				6AD442001EF0676200F32C3A /* ToDo.m */,
 				6AD442021EF075DD00F32C3A /* ToDoTableViewControllerCell.h */,
 				6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */,
-				6AD4420E1EF097AA00F32C3A /* AddNewTaskTableViewController.h */,
-				6AD4420F1EF097AA00F32C3A /* AddNewTaskTableViewController.m */,
 				6AD441F41EF062C200F32C3A /* Assets.xcassets */,
 				6AD441F61EF062C200F32C3A /* LaunchScreen.storyboard */,
 				6AD441F91EF062C200F32C3A /* Info.plist */,
@@ -181,7 +176,6 @@
 				6AD441ED1EF062C200F32C3A /* MasterViewController.m in Sources */,
 				6AD441E71EF062C200F32C3A /* main.m in Sources */,
 				6AD441F01EF062C200F32C3A /* DetailViewController.m in Sources */,
-				6AD442101EF097AA00F32C3A /* AddNewTaskTableViewController.m in Sources */,
 				6AD442041EF075DD00F32C3A /* ToDoTableViewControllerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
