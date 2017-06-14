@@ -14,8 +14,6 @@
 {
     [super awakeFromNib];
     // Initialization code
-    UISwipeGestureRecognizer *toDoSwiped = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToComplete:)];
-    [self addGestureRecognizer:toDoSwiped];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -31,15 +29,6 @@
     self.descriptionLabel.text = toDo.toDoDescription;
     self.priorityLabel.text = [NSString stringWithFormat:@"%ld", (long)toDo.priorityNumber];
 }
-
-- (void)swipeToComplete:(UISwipeGestureRecognizer *)swipeGesture
-{
-    if (swipeGesture.direction == UISwipeGestureRecognizerDirectionRight)
-    {
-        [self.delegate toDoTablViewCellWasSwiped:self];
-    }
-}
-
 
 
 @end

@@ -12,11 +12,12 @@
 #import "ToDoTableViewControllerCell.h"
 #import "AddNewToDoTableViewController.h"
 
-@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewToDoDelegate>
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewToDoDelegate, ToDoTableViewCellDelegate>
 
 @property NSMutableArray *objects;
 @property (nonatomic, strong) NSMutableArray *toDoTasks;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
+@property (nonatomic) BOOL markCompleted;
 
 @end
 
@@ -113,24 +114,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    
     ToDoTableViewControllerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.delegate = nil;
+    
+    UISwipeGestureRecognizer *toDoSwiped = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToComplete:)];
+    toDoSwiped.direction = UISwipeGestureRecognizerDirectionRight;
+    [cell addGestureRecognizer:toDoSwiped];
+    
     ToDo *toDo = self.toDoTasks[indexPath.row];
+    
     [cell configureCellWithToDo:toDo];
     
-    if (toDo.isCompleted)
-    {
-        NSMutableAttributedString *completedToDoTitle = [[NSMutableAttributedString alloc] initWithString:toDo.toDoTitle attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
-        NSMutableAttributedString *completedToDoDescription = [[NSMutableAttributedString alloc] initWithString:toDo.toDoDescription attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
-        
-        cell.taskLabel.attributedText = completedToDoTitle;
-        cell.descriptionLabel.attributedText = completedToDoDescription;
-    }
-    
-    else
-    {
-        cell.taskLabel.text = toDo.toDoTitle;
-        cell.descriptionLabel.text = toDo.toDoDescription;
-    }
     return cell;
 }
 
@@ -177,6 +172,21 @@
     ToDo *toDo = self.toDoTasks[swiped];
     toDo.isCompleted = YES;
     [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)swipeToComplete:(UISwipeGestureRecognizer *)swipeGesture
+{
+    CGPoint location = [swipeGesture locationInView:self.tableView];
+    NSIndexPath *swipedIndex = [self.tableView indexPathForRowAtPoint:location];
+    UITableViewCell *swipedCell = [self.tableView cellForRowAtIndexPath:swipedIndex];
+    
+    NSLog(@"This was swiped at %@", swipedIndex);
+    
+    // ************** Get to strikethrough
+//    if (_toDoTasks == _markCompleted)
+//    {
+//        NSMutableAttributedString *completedToDoTitle = [[NSMutableAttributedString alloc] initWithString:self.title attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+//    }
 }
 
 @end
