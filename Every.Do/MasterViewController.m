@@ -16,7 +16,7 @@
 @interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewToDoDelegate>
 
 @property NSMutableArray *objects;
-@property (nonatomic) NSMutableArray *toDoTasks;
+@property (nonatomic, strong) NSMutableArray *toDoTasks;
 
 @end
 
@@ -90,6 +90,7 @@
         
         [controller setDetailItem:todo];
     }
+    
     if ([[segue identifier] isEqualToString:@"NewToDoMenu"])
     {
         AddNewToDoTableViewController *newToDoController = (AddNewToDoTableViewController *)[segue destinationViewController];
@@ -109,7 +110,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.toDoTasks.count;
+    return [self.toDoTasks count];
 }
 
 

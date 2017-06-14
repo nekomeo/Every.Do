@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *toDoTextField;
 @property (nonatomic, weak) id <AddNewToDoDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
+@property (weak, nonatomic) IBOutlet UITextView *toDoDescriptionTextView;
+
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
 @end

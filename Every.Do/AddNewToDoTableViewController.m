@@ -38,7 +38,22 @@
 }
 - (IBAction)done:(id)sender
 {
+    ToDo *toDo = [[ToDo alloc] init];
+    
+    toDo.toDoTitle = self.toDoTextField.text;
+    toDo.priorityNumber = [self.priorityTextField.text integerValue];
+    toDo.toDoDescription = self.toDoDescriptionTextView.text;
+    
     [self.delegate addNewToDoViewControllerDidSave:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(void)configureCellWithNewToDo:(ToDo *)toDo
+{
+    self.toDoTextField.text = toDo.toDoTitle;
+    self.toDoDescriptionTextView.text = toDo.toDoDescription;
+    self.priorityTextField.text = [NSString stringWithFormat:@"%ld", (long)toDo.priorityNumber];
+}
+
 
 @end
