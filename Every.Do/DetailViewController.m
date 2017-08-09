@@ -18,8 +18,10 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem {
-    if (_detailItem != newDetailItem) {
+- (void)setDetailItem:(id)newDetailItem
+{
+    if (_detailItem != newDetailItem)
+    {
         _detailItem = newDetailItem;
             
         // Update the view.
@@ -28,17 +30,16 @@
 }
 
 
-- (void)configureView {
+- (void)configureView
+{
     // Update the user interface for the detail item.
-    if (self.detailItem) {
+    if (self.detailItem)
+    {
         self.taskTitleDetailLabel.text = [self.detailItem toDoTitle];
-        
         self.taskDescriptionTextView.text = [self.detailItem toDoDescription];
 
         NSString *complete = [NSString stringWithFormat:@"Complete %s", [self.detailItem isCompleted]? "YES" : "NO"];
-        
         self.taskCompleteDetailLabel.text = complete;
-        
     }
 }
 

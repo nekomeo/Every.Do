@@ -7,14 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToDo.h"
+
+@protocol DetailViewControllerDelegate <NSObject>
+
+- (void)sendToDo:(ToDo *)toDo;
+
+@end
 
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UITextView *taskDescriptionTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *taskImage;
 @property (weak, nonatomic) IBOutlet UILabel *taskTitleDetailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *taskCompleteDetailLabel;
+@property (nonatomic, strong) ToDo *toDo;
 
 - (void)setDetailItem:(id)newDetailItem;
 

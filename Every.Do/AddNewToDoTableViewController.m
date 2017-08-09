@@ -9,27 +9,12 @@
 #import "AddNewToDoTableViewController.h"
 
 @interface AddNewToDoTableViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *toDoTextField;
+@property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
+@property (weak, nonatomic) IBOutlet UITextView *toDoDescriptionTextView;
 @end
 
 @implementation AddNewToDoTableViewController
-
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem)
-    {
-        _detailItem = newDetailItem;
-        [self configureView];
-    }
-}
-
-- (void)configureView
-{
-    if (self.detailItem)
-    {
-    
-    }
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,22 +35,33 @@
 
 - (IBAction)cancel:(id)sender
 {
-    //[self.delegate addNewToDoViewControllerDidCancel:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (IBAction)done:(id)sender
 {
-    ToDo *toDo = [[ToDo alloc] init];
-    
-    toDo.toDoTitle = self.toDoTextField.text;
-    toDo.priorityNumber = [self.priorityTextField.text integerValue];
-    toDo.toDoDescription = self.toDoDescriptionTextView.text;
-    
-    //self.delegate = self;
+    ToDo *toDo = [self createNewToDo];
     [self.delegate addNewToDo:toDo];
+    [self dismissKeyboards];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (ToDo *)createNewToDo
+{
+    ToDo *newToDo = [[ToDo alloc] init];
+    newToDo.toDoTitle = self.toDoTextField.text;
+    newToDo.toDoDescription = self.toDoDescriptionTextView.text;
+    newToDo.priorityNumber = [self.priorityTextField.text integerValue];
+    
+    return newToDo;
+}
+
+- (void)dismissKeyboards
+{
+    [self.toDoTextField resignFirstResponder];
+    [self.toDoDescriptionTextView resignFirstResponder];
+    [self.priorityTextField resignFirstResponder];
 }
 
 @end

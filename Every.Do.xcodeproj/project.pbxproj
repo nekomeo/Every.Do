@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1B2B221F3AD2D600F2A9EB /* ToDoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1B2B211F3AD2D600F2A9EB /* ToDoTableViewCell.m */; };
 		6AD441E71EF062C200F32C3A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD441E61EF062C200F32C3A /* main.m */; };
 		6AD441EA1EF062C200F32C3A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD441E91EF062C200F32C3A /* AppDelegate.m */; };
 		6AD441ED1EF062C200F32C3A /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD441EC1EF062C200F32C3A /* MasterViewController.m */; };
@@ -15,11 +16,12 @@
 		6AD441F51EF062C200F32C3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AD441F41EF062C200F32C3A /* Assets.xcassets */; };
 		6AD441F81EF062C200F32C3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AD441F61EF062C200F32C3A /* LaunchScreen.storyboard */; };
 		6AD442011EF0676200F32C3A /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442001EF0676200F32C3A /* ToDo.m */; };
-		6AD442041EF075DD00F32C3A /* ToDoTableViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */; };
 		6AD442131EF111C100F32C3A /* AddNewToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD442121EF111C100F32C3A /* AddNewToDoTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A1B2B201F3AD2D600F2A9EB /* ToDoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoTableViewCell.h; path = ../ToDoTableViewCell.h; sourceTree = "<group>"; };
+		6A1B2B211F3AD2D600F2A9EB /* ToDoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoTableViewCell.m; path = ../ToDoTableViewCell.m; sourceTree = "<group>"; };
 		6AD441E21EF062C200F32C3A /* Every.Do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Every.Do.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AD441E61EF062C200F32C3A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6AD441E81EF062C200F32C3A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -34,8 +36,6 @@
 		6AD441F91EF062C200F32C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AD441FF1EF0676200F32C3A /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
 		6AD442001EF0676200F32C3A /* ToDo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
-		6AD442021EF075DD00F32C3A /* ToDoTableViewControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoTableViewControllerCell.h; sourceTree = "<group>"; };
-		6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewControllerCell.m; sourceTree = "<group>"; };
 		6AD442111EF111C100F32C3A /* AddNewToDoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewToDoTableViewController.h; sourceTree = "<group>"; };
 		6AD442121EF111C100F32C3A /* AddNewToDoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewToDoTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,8 +81,8 @@
 				6AD442121EF111C100F32C3A /* AddNewToDoTableViewController.m */,
 				6AD441FF1EF0676200F32C3A /* ToDo.h */,
 				6AD442001EF0676200F32C3A /* ToDo.m */,
-				6AD442021EF075DD00F32C3A /* ToDoTableViewControllerCell.h */,
-				6AD442031EF075DD00F32C3A /* ToDoTableViewControllerCell.m */,
+				6A1B2B201F3AD2D600F2A9EB /* ToDoTableViewCell.h */,
+				6A1B2B211F3AD2D600F2A9EB /* ToDoTableViewCell.m */,
 				6AD441F41EF062C200F32C3A /* Assets.xcassets */,
 				6AD441F61EF062C200F32C3A /* LaunchScreen.storyboard */,
 				6AD441F91EF062C200F32C3A /* Info.plist */,
@@ -172,11 +172,11 @@
 			files = (
 				6AD442011EF0676200F32C3A /* ToDo.m in Sources */,
 				6AD441EA1EF062C200F32C3A /* AppDelegate.m in Sources */,
+				6A1B2B221F3AD2D600F2A9EB /* ToDoTableViewCell.m in Sources */,
 				6AD442131EF111C100F32C3A /* AddNewToDoTableViewController.m in Sources */,
 				6AD441ED1EF062C200F32C3A /* MasterViewController.m in Sources */,
 				6AD441E71EF062C200F32C3A /* main.m in Sources */,
 				6AD441F01EF062C200F32C3A /* DetailViewController.m in Sources */,
-				6AD442041EF075DD00F32C3A /* ToDoTableViewControllerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,14 +8,12 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
-#import "ToDo.h"
-#import "ToDoTableViewControllerCell.h"
+#import "ToDoTableViewCell.h"
 #import "AddNewToDoTableViewController.h"
 
-@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewToDoDelegate, ToDoTableViewCellDelegate>
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewToDoViewControllerDelegate, ToDoTableViewCellDelegate>
 
 @property NSMutableArray *objects;
-@property (nonatomic, strong) NSMutableArray *toDoTasks;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (nonatomic) BOOL markCompleted;
 
@@ -26,36 +24,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self toDoInformation];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    
+}
+
+- (void)toDoInformation
+{
     ToDo *firstItem = [[ToDo alloc] initWithTitle:@"Do Every.Do" withDescription:@"Finish all tasks in assignment" priorityNumber:1];
     ToDo *secondItem = [[ToDo alloc] initWithTitle:@"Freak out about test" withDescription:@"Run around and panic" priorityNumber:2];
     ToDo *thirdItem = [[ToDo alloc] initWithTitle:@"KCCO" withDescription:@"Be zen" priorityNumber:3];
     
     firstItem.isCompleted = YES;
     
-    NSArray *toDoArray = @[firstItem, secondItem, thirdItem];
-    self.toDoTasks = [NSMutableArray new];
-    [self.toDoTasks addObjectsFromArray:toDoArray];
-}
-
-- (UIImage *)imageForPriority:(int)priority
-{
-    switch (priority) {
-        case 1: return [UIImage imageNamed:@"1StarSmall"];
-        case 2: return [UIImage imageNamed:@"2StarsSmall"];
-        case 3: return [UIImage imageNamed:@"3StarsSmall"];
-    }
-    return nil;
+    self.objects = [@[firstItem, secondItem, thirdItem] mutableCopy];
 }
 
 - (void)viewWillAppear:(BOOL)animated
-{
-}
+{}
 
 
 - (void)didReceiveMemoryWarning
@@ -67,9 +57,9 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!self.toDoTasks)
+    if (!self.objects)
     {
-        self.toDoTasks = [[NSMutableArray alloc] init];
+        self.objects = [[NSMutableArray alloc] init];
     }
     
     [self performSegueWithIdentifier:@"NewToDoMenu" sender:self];
@@ -83,7 +73,7 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController];
-        ToDo *todo = self.toDoTasks[indexPath.row];
+        ToDo *todo = self.objects[indexPath.row];
         
         [controller setDetailItem:todo];
     }
@@ -107,23 +97,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.toDoTasks count];
+    return [self.objects count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    ToDoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    ToDoTableViewControllerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.delegate = nil;
+//    UISwipeGestureRecognizer *toDoSwiped = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToComplete:)];
+//    toDoSwiped.direction = UISwipeGestureRecognizerDirectionRight;
+//    [cell addGestureRecognizer:toDoSwiped];
     
-    UISwipeGestureRecognizer *toDoSwiped = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToComplete:)];
-    toDoSwiped.direction = UISwipeGestureRecognizerDirectionRight;
-    [cell addGestureRecognizer:toDoSwiped];
-    
-    ToDo *toDo = self.toDoTasks[indexPath.row];
-    
+    ToDo *toDo = self.objects[indexPath.row];
     [cell configureCellWithToDo:toDo];
     
     return cell;
@@ -139,7 +125,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Index row %ld tapped", (long)indexPath.row);
+//    NSLog(@"Index row %ld tapped", (long)indexPath.row);
     self.selectedIndexPath = indexPath;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -147,29 +133,29 @@
 
 - (void)addNewToDo:(ToDo *)toDoNew
 {
-    NSLog(@"in new todo %@", toDoNew);
-    if (toDoNew)
-    {
-        [self.toDoTasks addObject:toDoNew];
-        [self.tableView reloadData];
-    }
+//    NSLog(@"in new todo %@", toDoNew);
+    [self.objects addObject:toDoNew];
+    [self.tableView reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.toDoTasks removeObjectAtIndex:indexPath.row];
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [self.objects removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
 
-- (void)toDoTableViewCellSwiped:(ToDoTableViewControllerCell *)cell
+- (void)toDoTableViewCellSwiped:(ToDoTableViewCell *)cell
 {
     NSIndexPath *path = [self.tableView indexPathForCell:cell];
     int swiped = (int)path.row;
-    ToDo *toDo = self.toDoTasks[swiped];
+    ToDo *toDo = self.objects[swiped];
     toDo.isCompleted = YES;
     [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationAutomatic];
 }

@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToDo.h"
+
+@protocol AddNewToDoViewControllerDelegate <NSObject>
+
+- (void)addNewToDo:(ToDo *)toDoNew;
+
+@end
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <AddNewToDoViewControllerDelegate>
 
 
 @end

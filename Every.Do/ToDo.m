@@ -10,15 +10,15 @@
 
 @implementation ToDo
 
-- (instancetype)initWithTitle:(NSString *)toDoTitle withDescription:(NSString *)toDoDescription priorityNumber:(int)priorityNumber
+- (instancetype)initWithTitle:(NSString *)toDoTitle withDescription:(NSString *)toDoDescription priorityNumber:(NSInteger)priorityNumber
 {
     self = [super init];
     if (self)
     {
-        self.toDoTitle = toDoTitle;
-        self.toDoDescription = toDoDescription;
-        self.priorityNumber = priorityNumber;
-        self.isCompleted = NO;
+        _toDoTitle = toDoTitle;
+        _toDoDescription = toDoDescription;
+        _priorityNumber = priorityNumber;
+        _isCompleted = NO;
     }
     return self;
 }

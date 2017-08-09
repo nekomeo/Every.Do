@@ -1,28 +1,26 @@
 //
-//  ToDoTableViewControllerCell.h
+//  ToDoTableViewCell.h
 //  Every.Do
 //
-//  Created by Elle Ti on 2017-06-13.
+//  Created by Elle Ti on 2017-08-08.
 //  Copyright © 2017 Elle Ti. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "ToDo.h"
 
-@class ToDoTableViewControllerCell;
+@class ToDoTableViewCell;
+
 @protocol ToDoTableViewCellDelegate <NSObject>
 
-- (void)toDoTablViewCellWasSwiped:(ToDoTableViewControllerCell *)cell;
+- (void)tableViewCellWasSwiped:(ToDoTableViewCell *)cell;
 
 @end
 
-@interface ToDoTableViewControllerCell : UITableViewCell
-
+@interface ToDoTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *priorityImage;
-@property (nonatomic, weak) id <ToDoTableViewCellDelegate> delegate;
 
 -(void)configureCellWithToDo:(ToDo *)toDo;
 
