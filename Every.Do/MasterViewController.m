@@ -11,11 +11,12 @@
 #import "ToDoTableViewCell.h"
 #import "AddNewToDoTableViewController.h"
 
-@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, AddNewToDoViewControllerDelegate, ToDoTableViewCellDelegate>
+@interface MasterViewController () <AddNewToDoViewControllerDelegate>
 
 @property NSMutableArray *objects;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @property (nonatomic) BOOL markCompleted;
+@property (nonatomic) UISwipeGestureRecognizer *completedSwipe;
 
 @end
 
@@ -42,6 +43,10 @@
     firstItem.isCompleted = YES;
     
     self.objects = [@[firstItem, secondItem, thirdItem] mutableCopy];
+    
+    self.completedSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToComplete:)];
+    self.completedSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:self.completedSwipe];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -164,15 +169,13 @@
 {
     CGPoint location = [swipeGesture locationInView:self.tableView];
     NSIndexPath *swipedIndex = [self.tableView indexPathForRowAtPoint:location];
-    UITableViewCell *swipedCell = [self.tableView cellForRowAtIndexPath:swipedIndex];
+    ToDoTableViewCell *swipedCell = [self.tableView cellForRowAtIndexPath:swipedIndex];
     
-    NSLog(@"This was swiped at %@", swipedIndex);
+//    NSLog(@"This was swiped at %@", swipedIndex);
     
-    // ************** Get to strikethrough
-//    if (_toDoTasks == _markCompleted)
-//    {
-//        NSMutableAttributedString *completedToDoTitle = [[NSMutableAttributedString alloc] initWithString:self.title attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
-//    }
+    NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:((ToDo*)self.objects[swipedIndex.row]).toDoTitle];
+    [titleString addAttribute:NSStrikethroughStyleAttributeName value:@2 range:NSMakeRange(0, [titleString length])];
+    swipedCell.taskLabel.attributedText = titleString;
 }
 
 @end

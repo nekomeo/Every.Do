@@ -11,11 +11,11 @@
 
 @class ToDoTableViewCell;
 
-@protocol ToDoTableViewCellDelegate <NSObject>
-
-- (void)tableViewCellWasSwiped:(ToDoTableViewCell *)cell;
-
-@end
+//@protocol ToDoTableViewCellDelegate <NSObject>
+//
+//- (void)tableViewCellWasSwiped:(ToDoTableViewCell *)cell;
+//
+//@end
 
 @interface ToDoTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;
